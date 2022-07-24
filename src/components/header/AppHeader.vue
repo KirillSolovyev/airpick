@@ -1,5 +1,5 @@
 <template>
-  <header class="flex" style="min-height: 40px">
+  <header class="flex pt-2" style="min-height: 40px">
     <div class="flex items-center space-between w-full">
       <div class="w-8">
         <slot name="leftAction" />
@@ -8,7 +8,7 @@
         <slot />
       </div>
       <div class="w-8">
-        <slot name="leftAction" />
+        <slot name="rightAction" />
       </div>
     </div>
   </header>

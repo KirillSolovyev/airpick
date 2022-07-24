@@ -1,6 +1,6 @@
 <template>
   <main class="flex flex-col w-full min-h-screen bg-gray-100">
-    <section class="sticky top-0 flex-shrink-0 pt-2 z-30">
+    <section class="sticky top-0 flex-shrink-0 z-30">
       <slot name="header" />
     </section>
     <section class="flex flex-col flex-grow px-4">
