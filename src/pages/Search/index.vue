@@ -17,15 +17,25 @@
       <section class="mt-5 space-y-3">
         <SearchResult v-for="i in 10" :key="i" />
       </section>
+      <DetailsBottomSheet />
     </template>
   </PageLayout>
 </template>
 
 <script setup>
+import { inject, nextTick, onBeforeMount } from 'vue';
+
 import PageLayout from '@/components/PageLayout.vue';
 import AppHeader from '@/components/header/AppHeader.vue';
 import AppHeaderBackButton from '@/components/header/AppHeaderBackButton.vue';
 import SearchResult from './components/SearchResult.vue';
+import DetailsBottomSheet from './components/DetailsBottomSheet.vue';
+
+const bottomSheet = inject('bottom-sheet');
+
+onBeforeMount(() => {
+  nextTick(() => bottomSheet.show('details-bottom-sheet'));
+});
 </script>
 
 <script>
