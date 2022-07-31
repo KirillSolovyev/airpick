@@ -1,8 +1,8 @@
 <template>
   <PageLayout class="bg-white">
     <template #header>
-      <AppHeader class="py-2 bg-blue-500">
-        <h2 class="text-white text-lg font-bold text-center">Билет оплачен</h2>
+      <AppHeader class="bg-white">
+        <h2 class="text-lg font-bold text-center">Билет оплачен</h2>
       </AppHeader>
     </template>
     <template #default>

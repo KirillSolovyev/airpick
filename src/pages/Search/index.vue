@@ -1,16 +1,17 @@
 <template>
   <PageLayout>
     <template #header>
-      <AppHeader class="py-2 bg-blue-500">
+      <AppHeader class="py-2">
         <template #leftAction>
           <AppHeaderBackButton
-            class="flex items-center justify-center w-full text-white text-lg"
+            class="flex items-center justify-center w-full text-lg"
+            @click="proceedToMainPage"
           />
         </template>
-        <h2 class="text-white text-lg font-bold text-center text-ellipsis">
+        <h2 class="text-lg font-bold text-center text-ellipsis">
           Алматы – Нур-Султан
         </h2>
-        <p class="text-white text-center text-sm">24 авг - 30 авг</p>
+        <p class="text-center text-sm">24 авг - 30 авг</p>
       </AppHeader>
     </template>
     <template #default>
@@ -37,6 +38,7 @@ const bottomSheet = inject('bottom-sheet');
 const router = useRouter();
 
 const showResultDetails = () => bottomSheet.show('details-bottom-sheet');
+const proceedToMainPage = () => router.replace({ name: 'Main' });
 const proceedToBooking = () =>
   router.push({ name: 'Booking', params: { bookingId: '123' } });
 </script>

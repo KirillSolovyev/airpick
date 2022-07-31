@@ -1,13 +1,14 @@
 <template>
   <PageLayout>
     <template #header>
-      <AppHeader class="py-2 bg-blue-500">
+      <AppHeader class="py-2">
         <template #leftAction>
           <AppHeaderBackButton
-            class="flex items-center justify-center w-full text-white text-lg"
+            class="flex items-center justify-center w-full text-lg"
+            @click="proceedToBookingPage"
           />
         </template>
-        <h2 class="text-white text-lg font-bold text-center">Оплата билета</h2>
+        <h2 class="text-lg font-bold text-center">Оплата билета</h2>
       </AppHeader>
     </template>
     <template #default>
@@ -68,6 +69,8 @@ import AppButton from '@/components/AppButton.vue';
 
 const router = useRouter();
 
+const proceedToBookingPage = () =>
+  router.push({ name: 'Booking', params: { bookingId: '123' } });
 const proceedToPaymentResult = () => router.push({ name: 'PaymentResult' });
 </script>
 
