@@ -17,13 +17,14 @@
       <section class="mt-5 space-y-3">
         <SearchResult v-for="i in 10" :key="i" @click="showResultDetails" />
       </section>
-      <DetailsBottomSheet />
+      <DetailsBottomSheet @onProceedToBooking="proceedToBooking" />
     </template>
   </PageLayout>
 </template>
 
 <script setup>
 import { inject } from 'vue';
+import { useRouter } from 'vue-router';
 
 import PageLayout from '@/components/PageLayout.vue';
 import AppHeader from '@/components/header/AppHeader.vue';
@@ -33,7 +34,11 @@ import DetailsBottomSheet from './components/details/DetailsBottomSheet.vue';
 
 const bottomSheet = inject('bottom-sheet');
 
+const router = useRouter();
+
 const showResultDetails = () => bottomSheet.show('details-bottom-sheet');
+const proceedToBooking = () =>
+  router.push({ name: 'Booking', params: { bookingId: '123' } });
 </script>
 
 <script>

@@ -7,7 +7,10 @@
       <div class="min-h-[75vh] mt-2 px-4 pb-4 space-y-4 touch-pan-y">
         <DirectionDetails class="bg-white" />
         <DirectionDetails class="bg-white" />
-        <AppButton class="sticky bottom-1 w-full text-white">
+        <AppButton
+          class="sticky bottom-1 w-full text-white"
+          @click="$emit('onProceedToBooking')"
+        >
           Продолжить
         </AppButton>
       </div>
