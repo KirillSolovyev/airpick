@@ -23,24 +23,28 @@
           class="sheet-content body-scroll-lock-ignore relative w-full flex flex-col overflow-hidden rounded-t-2xl transition duration-300 ease-out"
           role="dialog"
           aria-modal="true"
-          @touchstart="onSheetTouchStart"
-          @touchmove="onSheetTouchMove"
-          @touchend="onSheetTouchEnd"
         >
-          <div
-            class="w-full flex items-center justify-center flex-shrink-0"
-            @click="hide"
+          <header
+            class="py-2"
+            @touchstart="onSheetTouchStart"
+            @touchmove="onSheetTouchMove"
+            @touchend="onSheetTouchEnd"
           >
-            <div class="my-3 h-1 w-14 bg-gray-400 rounded"></div>
-          </div>
-          <button
-            class="z-10 absolute top-0 right-0 flex items-center justify-center mt-3 mr-4 w-6 h-6 text-xl text-gray-600"
-            type="button"
-            @click="hide"
-          >
-            <fa-icon icon="fa-solid fa-xmark"></fa-icon>
-          </button>
-          <slot name="title"></slot>
+            <div
+              class="w-full flex items-center justify-center flex-shrink-0"
+              @click="hide"
+            >
+              <div class="my-3 h-1 w-14 bg-gray-400 rounded"></div>
+            </div>
+            <button
+              class="z-10 absolute top-0 right-0 flex items-center justify-center mt-3 mr-4 w-6 h-6 text-xl text-gray-600"
+              type="button"
+              @click="hide"
+            >
+              <fa-icon icon="fa-solid fa-xmark"></fa-icon>
+            </button>
+            <slot name="title"></slot>
+          </header>
           <div
             ref="contentRef"
             class="max-h-screen overscroll-none overflow-x-hidden overflow-y-auto"

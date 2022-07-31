@@ -5,4 +5,7 @@
 
 html, body, #app {
   @apply w-full h-full;
+
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
 }
