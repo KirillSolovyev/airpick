@@ -6,12 +6,18 @@
       </AppHeader>
     </template>
     <div class="mt-64">
-      <SearchForm @onStartSearch="startSearch" />
+      <SearchForm
+        :search-state="searchForm"
+        @onStartSearch="startSearch"
+        @onDepCitySelect="onCitySelect($event, 'dep')"
+        @onArrCitySelect="onCitySelect($event, 'arr')"
+      />
     </div>
   </PageLayout>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 import PageLayout from '@/components/PageLayout.vue';
@@ -19,8 +25,31 @@ import AppHeader from '@/components/header/AppHeader.vue';
 import SearchForm from './components/SearchForm.vue';
 
 const router = useRouter();
-const startSearch = () =>
-  router.push({ name: 'Search', params: { hashcode: '123' } });
+
+const searchForm = ref({
+  dep: null,
+  arr: null,
+  dates: []
+});
+
+const onCitySelect = (city, type) => {
+  if (type === 'dep') {
+    searchForm.value.dep = city;
+  } else {
+    searchForm.value.arr = city;
+  }
+};
+
+const validate = () =>
+  !searchForm.value.dep ||
+  !searchForm.value.arr ||
+  !searchForm.value.dates.length;
+
+const startSearch = () => {
+  if (validate()) {
+    router.push({ name: 'Search', params: { hashcode: '123' } });
+  }
+};
 </script>
 
 <script>

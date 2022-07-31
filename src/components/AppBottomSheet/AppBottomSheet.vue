@@ -121,7 +121,7 @@ const onSheetTouchMove = (e) => {
 
 const onSheetTouchEnd = () => {
   const bottomSheetHeight = bottomSheetRef.value.offsetHeight;
-  const closingLimit = bottomSheetHeight < 200 ? bottomSheetHeight * 0.3 : 100;
+  const closingLimit = bottomSheetHeight * 0.5;
   if (
     bottomSheetState.value.sheetTouchStarted &&
     bottomSheetState.value.sheetShift >= closingLimit
