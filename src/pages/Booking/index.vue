@@ -1,13 +1,14 @@
 <template>
   <PageLayout>
     <template #header>
-      <AppHeader class="py-2 bg-blue-500">
+      <AppHeader class="py-2">
         <template #leftAction>
           <AppHeaderBackButton
-            class="flex items-center justify-center w-full text-white text-lg"
+            class="flex items-center justify-center w-full text-lg"
+            @click="proceedToSearchPage"
           />
         </template>
-        <h2 class="text-white text-lg font-bold text-center">Бронирование</h2>
+        <h2 class="text-lg font-bold text-center">Бронирование</h2>
       </AppHeader>
     </template>
     <template #default>
@@ -81,6 +82,8 @@ import AppButton from '@/components/AppButton.vue';
 
 const router = useRouter();
 
+const proceedToSearchPage = () =>
+  router.push({ name: 'Search', params: { hashcode: '123' } });
 const proceedToPaymentPage = () =>
   router.push({
     name: 'Payment',

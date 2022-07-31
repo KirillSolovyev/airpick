@@ -1,7 +1,7 @@
 <template>
   <PageLayout class="bg-blue-500">
     <template #header>
-      <AppHeader>
+      <AppHeader class="bg-blue-500">
         <h1 class="text-white text-2xl font-bold text-center">Авиабилеты</h1>
       </AppHeader>
     </template>
