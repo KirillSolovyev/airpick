@@ -5,7 +5,9 @@
     </section>
     <section class="flex flex-col flex-grow px-4">
       <slot />
-      <div class="sticky bottom-0"></div>
+      <div class="sticky bottom-1">
+        <slot name="footer" />
+      </div>
     </section>
   </main>
 </template>
