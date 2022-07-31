@@ -6,15 +6,21 @@
       </AppHeader>
     </template>
     <div class="mt-64">
-      <SearchForm />
+      <SearchForm @onStartSearch="startSearch" />
     </div>
   </PageLayout>
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+
 import PageLayout from '@/components/PageLayout.vue';
 import AppHeader from '@/components/header/AppHeader.vue';
 import SearchForm from './components/SearchForm.vue';
+
+const router = useRouter();
+const startSearch = () =>
+  router.push({ name: 'Search', params: { hashcode: '123' } });
 </script>
 
 <script>

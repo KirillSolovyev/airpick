@@ -4,10 +4,10 @@
       <h2 class="text-lg font-black text-center">Детали рейса</h2>
     </template>
     <template #default>
-      <div class="min-h-[75vh] mt-4 px-4 space-y-4">
+      <div class="min-h-[75vh] mt-4 px-4 pb-4 space-y-4">
         <DirectionDetails class="bg-white" />
         <DirectionDetails class="bg-white" />
-        <AppButton class="sticky bottom-0 w-full text-white">
+        <AppButton class="sticky bottom-1 w-full text-white">
           Продолжить
         </AppButton>
       </div>

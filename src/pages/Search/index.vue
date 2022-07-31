@@ -15,7 +15,7 @@
     </template>
     <template #default>
       <section class="mt-5 space-y-3">
-        <SearchResult v-for="i in 10" :key="i" />
+        <SearchResult v-for="i in 10" :key="i" @click="showResultDetails" />
       </section>
       <DetailsBottomSheet />
     </template>
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { inject, nextTick, onBeforeMount } from 'vue';
+import { inject } from 'vue';
 
 import PageLayout from '@/components/PageLayout.vue';
 import AppHeader from '@/components/header/AppHeader.vue';
@@ -33,9 +33,7 @@ import DetailsBottomSheet from './components/details/DetailsBottomSheet.vue';
 
 const bottomSheet = inject('bottom-sheet');
 
-onBeforeMount(() => {
-  nextTick(() => bottomSheet.show('details-bottom-sheet'));
-});
+const showResultDetails = () => bottomSheet.show('details-bottom-sheet');
 </script>
 
 <script>

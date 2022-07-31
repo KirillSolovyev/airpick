@@ -1,13 +1,13 @@
 <template>
-  <section class="space-y-4">
+  <form class="space-y-4" @submit="$emit('onStartSearch')">
     <div class="space-y-3">
       <DirectionInputGroup />
       <DateInputs />
     </div>
-    <AppButton variant="main" class="w-full text-white text-2xl">
+    <AppButton type="submit" variant="main" class="w-full text-white text-2xl">
       Показать рейсы
     </AppButton>
-  </section>
+  </form>
 </template>
 
 <script setup>
