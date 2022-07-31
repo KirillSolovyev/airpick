@@ -20,7 +20,7 @@
           :style="{
             transform: `translateY(${bottomSheetState.sheetShift}px)`
           }"
-          class="relative w-full flex flex-col bg-white overflow-hidden rounded-t-2xl transition duration-300 ease-out"
+          class="sheet-content relative w-full flex flex-col overflow-hidden rounded-t-2xl transition duration-300 ease-out"
           role="dialog"
           aria-modal="true"
           @touchstart="onSheetTouchStart"
@@ -169,5 +169,9 @@ const hide = () => controller?.hide(props.name);
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+}
+
+.sheet-content {
+  background-color: var(--app-bottom-sheet-bg-color, #fff);
 }
 </style>

@@ -29,7 +29,7 @@ import PageLayout from '@/components/PageLayout.vue';
 import AppHeader from '@/components/header/AppHeader.vue';
 import AppHeaderBackButton from '@/components/header/AppHeaderBackButton.vue';
 import SearchResult from './components/SearchResult.vue';
-import DetailsBottomSheet from './components/DetailsBottomSheet.vue';
+import DetailsBottomSheet from './components/details/DetailsBottomSheet.vue';
 
 const bottomSheet = inject('bottom-sheet');
 
