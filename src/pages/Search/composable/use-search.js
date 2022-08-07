@@ -25,7 +25,7 @@ export function useAirSearch() {
       return grouppedOffers.value.map((offer) => ({
         ...offer,
         flights: offer.flights.map((flight) =>
-          mapFlight.mapFlight(result.value?.$meta.dict, flight)
+          mapFlight(result.value?.$meta.dict, flight)
         )
       }));
     }

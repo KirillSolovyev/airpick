@@ -4,16 +4,20 @@
       <h2 class="text-lg font-black text-center">Детали рейса</h2>
     </template>
     <template #default>
-      <div class="min-h-[75vh] mt-2 px-4 pb-4 space-y-4 touch-pan-y">
-        <DirectionDetails class="bg-white" />
-        <DirectionDetails class="bg-white" />
-        <AppButton
-          class="sticky bottom-1 w-full text-white"
-          @click="$emit('onProceedToBooking')"
-        >
-          Продолжить
-        </AppButton>
+      <div class="flex-grow min-h-[50vh] mt-2 px-4 pb-4 space-y-4 touch-pan-y">
+        <DirectionDetails
+          v-for="(flight, i) in offer.flights"
+          :key="i"
+          class="bg-white"
+          :flight="flight"
+        />
       </div>
+      <AppButton
+        class="sticky bottom-1 w-full text-white"
+        @click="$emit('onProceedToBooking')"
+      >
+        Продолжить
+      </AppButton>
     </template>
   </AppBottomSheet>
 </template>
@@ -22,6 +26,13 @@
 import AppBottomSheet from '@/components/AppBottomSheet/AppBottomSheet.vue';
 import AppButton from '@/components/AppButton.vue';
 import DirectionDetails from './DirectionDetails.vue';
+
+defineProps({
+  offer: {
+    type: Object,
+    required: true
+  }
+});
 </script>
 
 <style scoped>

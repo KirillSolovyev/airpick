@@ -33,3 +33,17 @@ export function mapFlight(dict, flight) {
     segments: flight.segments.map((segment) => mapSegment(dict, segment))
   };
 }
+
+export const getUniqueAirlines = (flight) => {
+  const { segments } = flight;
+  const airlinesHashmap = segments.reduce((acc, { airline, airlineTitle }) => {
+    if (!acc[airline]) {
+      acc[airline] = airlineTitle;
+    }
+    return acc;
+  }, {});
+  return Object.keys(airlinesHashmap).map((iata) => ({
+    iata,
+    title: airlinesHashmap[iata]
+  }));
+};

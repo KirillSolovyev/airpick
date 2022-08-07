@@ -9,23 +9,33 @@
         />
       </template>
       <template #default>
-        <section class="mt-5 space-y-3">
-          <SearchResult v-for="i in 10" :key="i" @click="showResultDetails" />
+        <section class="mt-5 pb-4 space-y-3">
+          <SearchResult
+            v-for="offer in search.mappedOffers.value"
+            :key="offer.id"
+            :offer="offer"
+            @click="showResultDetails(offer)"
+          />
         </section>
-        <DetailsBottomSheet @onProceedToBooking="proceedToBooking" />
+        <DetailsBottomSheet
+          v-if="selectedOffer"
+          :offer="selectedOffer"
+          @onProceedToBooking="proceedToBooking"
+        />
       </template>
     </PageLayout>
     <section
       v-else
-      class="flex items-center justify-center w-full h-full bg-gray-100"
+      class="flex flex-col items-center justify-center w-full h-full space-y-6 bg-gray-100"
     >
+      <h4 class="text-lg font-black">Идет поиск авиабилетов</h4>
       <AppLoader />
     </section>
   </Transition>
 </template>
 
 <script setup>
-import { inject, onBeforeMount } from 'vue';
+import { ref, inject, onBeforeMount, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { useAirSearch } from './composable/use-search';
@@ -47,7 +57,12 @@ const bottomSheet = inject('bottom-sheet');
 const router = useRouter();
 const search = useAirSearch();
 
-const showResultDetails = () => bottomSheet.show('details-bottom-sheet');
+const selectedOffer = ref();
+
+const showResultDetails = (offer) => {
+  selectedOffer.value = offer;
+  nextTick(() => bottomSheet.show('details-bottom-sheet'));
+};
 const proceedToMainPage = () => router.replace({ name: 'Main' });
 const proceedToBooking = () =>
   router.push({ name: 'Booking', params: { bookingId: '123' } });
