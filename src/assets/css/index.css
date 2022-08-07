@@ -4,8 +4,18 @@
 
 
 html, body, #app {
-  @apply w-full h-full;
+  @apply w-full h-full bg-gray-100;
 
   touch-action: pan-y;
   overscroll-behavior-y: contain;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }

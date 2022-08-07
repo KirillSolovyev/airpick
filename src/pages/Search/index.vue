@@ -1,26 +1,27 @@
 <template>
-  <PageLayout>
-    <template #header>
-      <AppHeader class="py-2">
-        <template #leftAction>
-          <AppHeaderBackButton
-            class="flex items-center justify-center w-full text-lg"
-            @click="proceedToMainPage"
-          />
-        </template>
-        <h2 class="text-lg font-bold text-center text-ellipsis">
-          Алматы – Нур-Султан
-        </h2>
-        <p class="text-center text-sm">24 авг - 30 авг</p>
-      </AppHeader>
-    </template>
-    <template #default>
-      <section class="mt-5 space-y-3">
-        <SearchResult v-for="i in 10" :key="i" @click="showResultDetails" />
-      </section>
-      <DetailsBottomSheet @onProceedToBooking="proceedToBooking" />
-    </template>
-  </PageLayout>
+  <Transition name="fade">
+    <PageLayout v-if="!search.isLoading.value">
+      <template #header>
+        <SearchHeader
+          :search-parameters="search.result.value.$meta.search_params"
+          :dict="search.result.value.$meta.dict"
+          @onBackButtonClick="proceedToMainPage"
+        />
+      </template>
+      <template #default>
+        <section class="mt-5 space-y-3">
+          <SearchResult v-for="i in 10" :key="i" @click="showResultDetails" />
+        </section>
+        <DetailsBottomSheet @onProceedToBooking="proceedToBooking" />
+      </template>
+    </PageLayout>
+    <section
+      v-else
+      class="flex items-center justify-center w-full h-full bg-gray-100"
+    >
+      <AppLoader />
+    </section>
+  </Transition>
 </template>
 
 <script setup>
@@ -29,8 +30,8 @@ import { useRouter } from 'vue-router';
 
 import { useAirSearch } from './composable/use-search';
 import PageLayout from '@/components/PageLayout.vue';
-import AppHeader from '@/components/header/AppHeader.vue';
-import AppHeaderBackButton from '@/components/header/AppHeaderBackButton.vue';
+import AppLoader from '@/components/AppLoader.vue';
+import SearchHeader from './components/SearchHeader.vue';
 import SearchResult from './components/SearchResult.vue';
 import DetailsBottomSheet from './components/details/DetailsBottomSheet.vue';
 
