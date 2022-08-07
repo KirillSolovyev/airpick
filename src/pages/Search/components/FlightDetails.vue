@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-between space-x-2">
-    <div class="flex-shrink-0 w-[105px]">
+    <div class="flex-shrink-0 w-[120px]">
       <p class="font-medium">{{ flightTime }}</p>
       <p class="text-gray-500 text-xs font-medium">
         {{ firstSegment.dep.airport }} — {{ lastSegment.arr.airport }}

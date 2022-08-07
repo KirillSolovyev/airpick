@@ -1,7 +1,7 @@
 <template>
   <div class="flex leading-none">
     <div
-      class="flex flex-col items-center flex-shrink-0 w-[34px] pb-[5px] pt-[3px]"
+      class="flex flex-col items-center flex-shrink-0 w-[34px] pb-[5px] pr-[3px]"
     >
       <span class="w-2 h-2 rounded-full bg-gray-200"></span>
       <span class="h-full w-[2px] bg-gray-200"></span>

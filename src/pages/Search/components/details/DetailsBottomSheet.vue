@@ -4,7 +4,9 @@
       <h2 class="text-lg font-black text-center">Детали рейса</h2>
     </template>
     <template #default>
-      <div class="flex-grow min-h-[50vh] mt-2 px-4 pb-4 space-y-4 touch-pan-y">
+      <div
+        class="flex-grow min-h-[50vh] mt-2 mb-4 px-4 pb-4 space-y-4 touch-pan-y"
+      >
         <DirectionDetails
           v-for="(flight, i) in offer.flights"
           :key="i"
@@ -12,12 +14,14 @@
           :flight="flight"
         />
       </div>
-      <AppButton
-        class="sticky bottom-1 w-full text-white"
-        @click="$emit('onProceedToBooking')"
-      >
-        Продолжить
-      </AppButton>
+      <div class="sticky bottom-4 px-4">
+        <AppButton
+          class="w-full text-white"
+          @click="$emit('onProceedToBooking')"
+        >
+          Продолжить
+        </AppButton>
+      </div>
     </template>
   </AppBottomSheet>
 </template>
