@@ -1,6 +1,6 @@
 <template>
   <AppBottomSheet :name="name">
-    <template #header>
+    <template #title>
       <h2 class="text-lg font-black text-center">Выбор города</h2>
     </template>
     <template #default>
