@@ -22,7 +22,8 @@ const router = createRouter({
     {
       path: '/booking/:bookingId',
       name: 'Booking',
-      component: BookingPage
+      component: BookingPage,
+      props: true
     },
     {
       path: '/payment/:paymentId',

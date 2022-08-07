@@ -3,6 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faArrowLeft, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { SetupCalendar } from 'v-calendar';
+import Maska from 'maska';
 
 import { createBottomSheet } from '@/shared/bottom-sheet-controller';
 
@@ -33,6 +34,7 @@ const VCalendarConfig = {
 createApp(App)
   .use(router)
   .use(SetupCalendar, VCalendarConfig)
+  .use(Maska)
   .provide('bottom-sheet', createBottomSheet())
   .component('fa-icon', FontAwesomeIcon)
   .mount('#app');

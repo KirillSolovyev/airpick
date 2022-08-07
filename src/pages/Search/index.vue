@@ -20,7 +20,7 @@
         <DetailsBottomSheet
           v-if="selectedOffer"
           :offer="selectedOffer"
-          @onProceedToBooking="proceedToBooking"
+          @onProceedToBooking="proceedToBooking(selectedOffer)"
         />
       </template>
     </PageLayout>
@@ -64,8 +64,10 @@ const showResultDetails = (offer) => {
   nextTick(() => bottomSheet.show('details-bottom-sheet'));
 };
 const proceedToMainPage = () => router.replace({ name: 'Main' });
-const proceedToBooking = () =>
-  router.push({ name: 'Booking', params: { bookingId: '123' } });
+const proceedToBooking = (offer) => {
+  localStorage.setItem('airpick:selectedOffer', offer);
+  router.push({ name: 'Booking', params: { bookingId: offer.id } });
+};
 
 onBeforeMount(() => {
   search.startAirSearch(props.hashcode);
