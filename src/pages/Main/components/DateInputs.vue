@@ -25,7 +25,7 @@
 
 <script setup>
 import { ref, inject, computed } from 'vue';
-import { format, getVerbalDate } from '@/shared/utils/dates';
+import { dateUtils } from '@/shared/utils/dates';
 
 import SearchFormButton from './SearchFormButton.vue';
 import DatesPickerBottomSheet from './DatesPickerBottomSheet.vue';
@@ -43,10 +43,10 @@ const bottomSheet = inject('bottom-sheet');
 const isRange = ref(false);
 
 const departureDateText = computed(() =>
-  props.dates[0] ? getVerbalDate(props.dates[0]) : null
+  props.dates[0] ? dateUtils.getVerbalDate(props.dates[0]) : null
 );
 const arrivalDateText = computed(() =>
-  props.dates[1] ? getVerbalDate(props.dates[1]) : null
+  props.dates[1] ? dateUtils.getVerbalDate(props.dates[1]) : null
 );
 
 const showDatesPicker = () => bottomSheet.show('date-picker-bottom-sheet');
@@ -58,7 +58,7 @@ const handleDateInputClick = (range) => {
 const onDatesSelect = (dates) => {
   emit(
     'onDatesSelect',
-    dates.map((date) => format(date, 'YYYY-MM-DD'))
+    dates.map((date) => dateUtils.format(date, 'YYYY-MM-DD'))
   );
 };
 </script>

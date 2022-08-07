@@ -16,7 +16,8 @@ const router = createRouter({
     {
       path: '/search/:hashcode',
       name: 'Search',
-      component: SearchPage
+      component: SearchPage,
+      props: true
     },
     {
       path: '/booking/:bookingId',
