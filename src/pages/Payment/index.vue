@@ -14,9 +14,9 @@
     <template #default>
       <form class="flex-grow py-4 space-y-4">
         <div class="p-4 space-y-4 bg-white rounded-3xl">
-          <h4 class="text-2xl font-black">Нур-Султан → Алматы</h4>
+          <h4 class="text-2xl font-black">Алматы → Нур-Султан</h4>
           <div class="flex items-center">
-            <AirlineIcon />
+            <AirlineIcon :airline="{ iata: 'KC-', title: 'FlyArustan' }" />
             <p class="ml-1 font-medium">Fly Arystan</p>
             <p class="ml-auto text-sm font-medium">22:15 - 04:30</p>
           </div>
@@ -30,7 +30,7 @@
             </div>
             <div>
               <p class="text-xs text-gray-500">Номер документа</p>
-              <p>991211351128</p>
+              <p>123456789012</p>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
         class="sticky bottom-0 w-full text-white"
         @click="proceedToPaymentResult"
       >
-        Оплатить 302 889 ₸
+        Оплатить 37 000 ₸
       </AppButton>
     </template>
   </PageLayout>
