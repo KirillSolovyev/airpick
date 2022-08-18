@@ -17,11 +17,13 @@
             @click="showResultDetails(offer)"
           />
         </section>
-        <DetailsBottomSheet
-          v-if="selectedOffer"
-          :offer="selectedOffer"
-          @onProceedToBooking="proceedToBooking(selectedOffer)"
-        />
+        <DetailsBottomSheet v-if="selectedOffer" :offer="selectedOffer">
+          <template #footer>
+            <AppButton class="w-full text-white" @click="proceedToBooking">
+              Продолжить
+            </AppButton>
+          </template>
+        </DetailsBottomSheet>
       </template>
     </PageLayout>
     <section
@@ -41,9 +43,10 @@ import { useRouter } from 'vue-router';
 import { useAirSearch } from './composable/use-search';
 import PageLayout from '@/components/PageLayout.vue';
 import AppLoader from '@/components/AppLoader.vue';
+import DetailsBottomSheet from '@/shared/components/details/DetailsBottomSheet.vue';
+import AppButton from '@/components/AppButton.vue';
 import SearchHeader from './components/SearchHeader.vue';
 import SearchResult from './components/SearchResult.vue';
-import DetailsBottomSheet from './components/details/DetailsBottomSheet.vue';
 
 const props = defineProps({
   hashcode: {
@@ -64,9 +67,15 @@ const showResultDetails = (offer) => {
   nextTick(() => bottomSheet.show('details-bottom-sheet'));
 };
 const proceedToMainPage = () => router.replace({ name: 'Main' });
-const proceedToBooking = (offer) => {
-  localStorage.setItem('airpick:selectedOffer', offer);
-  router.push({ name: 'Booking', params: { bookingId: offer.id } });
+const proceedToBooking = () => {
+  localStorage.setItem(
+    'airpick:selectedOffer',
+    JSON.stringify(selectedOffer.value)
+  );
+  router.push({
+    name: 'Booking',
+    params: { bookingId: selectedOffer.value.id }
+  });
 };
 
 onBeforeMount(() => {

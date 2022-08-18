@@ -163,7 +163,7 @@ const proceedToPaymentPage = async () => {
   const result = await v$.value.$validate();
   if (result) {
     isLoading.value = true;
-    localStorage.setItem('airpick:bookingData', state);
+    localStorage.setItem('airpick:bookingData', JSON.stringify(state.value));
     setTimeout(() => {
       router.push({
         name: 'Payment',

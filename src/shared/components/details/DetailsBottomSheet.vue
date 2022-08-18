@@ -15,12 +15,7 @@
         />
       </div>
       <div class="sticky bottom-4 px-4">
-        <AppButton
-          class="w-full text-white"
-          @click="$emit('onProceedToBooking')"
-        >
-          Продолжить
-        </AppButton>
+        <slot name="footer" />
       </div>
     </template>
   </AppBottomSheet>
@@ -28,7 +23,6 @@
 
 <script setup>
 import AppBottomSheet from '@/components/AppBottomSheet/AppBottomSheet.vue';
-import AppButton from '@/components/AppButton.vue';
 import DirectionDetails from './DirectionDetails.vue';
 
 defineProps({

@@ -13,7 +13,7 @@
 import { computed } from 'vue';
 import { textUtils } from '@/shared/utils/text';
 import AppButton from '@/components/AppButton.vue';
-import FlightDetals from './FlightDetails.vue';
+import FlightDetals from '@/shared/components/FlightDetails.vue';
 
 const props = defineProps({
   offer: {
