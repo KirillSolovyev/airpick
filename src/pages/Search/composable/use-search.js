@@ -3,6 +3,7 @@ import { airflow } from '@aviatakz/platform-client';
 
 import { clientAwaited } from '@/client';
 import { mapFlight } from '@/shared/utils/flights';
+import { getCachedResult, cacheResult } from './cache-search';
 
 function startSearch(query) {
   return clientAwaited.then((client) => {
@@ -34,12 +35,18 @@ export function useAirSearch() {
 
   function startAirSearch(query) {
     isLoading.value = true;
-    return startSearch(query)
-      .then((res) => {
-        result.value = res;
-        return res;
-      })
-      .finally(() => (isLoading.value = false));
+    const cachedResult = getCachedResult(query);
+    const searchPromise = cachedResult
+      ? new Promise((resolve) => {
+          result.value = cachedResult;
+          resolve(cachedResult);
+        })
+      : startSearch(query).then((res) => {
+          result.value = res;
+          cacheResult(res, query);
+          return res;
+        });
+    return searchPromise.finally(() => (isLoading.value = false));
   }
 
   return {
