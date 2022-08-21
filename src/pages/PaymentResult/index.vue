@@ -1,7 +1,7 @@
 <template>
-  <PageLayout class="bg-white">
+  <PageLayout class="!bg-white">
     <template #header>
-      <AppHeader class="bg-white">
+      <AppHeader class="!bg-white">
         <h2 class="text-lg font-bold text-center">Билет оплачен</h2>
       </AppHeader>
     </template>
@@ -21,7 +21,7 @@
       </div>
     </template>
     <template #footer>
-      <AppButton class="w-full text-white" @click="proceedToMainPage">
+      <AppButton class="w-full mb-4 text-white" @click="proceedToMainPage">
         Найти новые рейсы
       </AppButton>
     </template>
